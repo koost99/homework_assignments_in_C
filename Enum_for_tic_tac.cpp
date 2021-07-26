@@ -1,4 +1,4 @@
-﻿
+
 #include <iostream>
 #include <locale>
 
@@ -15,7 +15,7 @@ double h = 2.7182818284;
 
 /*задание второе и третее (его вывод так же ниже, но происходит до переменных) массив так же ниже*/
 
-enum TToe { X = 8, O, _ };
+enum TToe { X = -2, O, _ };
 TToe fp = X;                                    // вот тут Visual Studio дает предупреждение (Тип перечисления "TToe" не входит в область. Старайтесь использовать "enum class" вместо "enum")
 TToe fs = O;
 TToe sp = _;
@@ -24,13 +24,17 @@ TToe sp = _;
 
 struct GameLevel
 {
-    char mas[3][3];                             // массив поля для игры
-    int Score;                                  // счетчики очков первого и второго игроков
-    char Name;                                  // имена игроков
+    TToe mas[3][3];                             // массив поля для игры
+    int Score1;                                  // счетчики очков первого и второго игроков
+    int Score2;
+    char Name1[10];                                  // имена игроков
+    char Name2[10];
 };
 
 
-/*============================================*/
+/*Создать структуру (struct MyVariant) объединяющую: union MyData (int, float, char) и 3-и битовых поля (флага) указывающими 
+какого типа значение в данный момент содержится в объединении (isInt, isFloat, isChar). Продемонстрировать пример использования 
+в коде этой структуры.*/
 
 struct MyVariant
 {
@@ -50,25 +54,41 @@ int main()
     TToe mas[3] = { X, O, _};                   //массив хранящий значения перечисления TToe
     for (int i = 0; i < 3; i++)                 //цикл вывода массива в терминал
     {
-        std::cout << mas[i] << std::endl;       //вывод значений массива в терминал
+        std::cout << mas[i] << "\t";       //вывод значений массива в терминал
     }
+    std::cout << std::endl;
     
 /*============================================*/
-    /*int i = 0;                                // эксперимент по вводу имени игрока 
-    char Name[10];                          
-    do {
-        std::cin >> Name[i];
-        i++;
-    } while (i < 10);
 
-    for (i=0; i < 10; i++) {
-        std::cout << Name[i];
+    GameLevel ms;
+    std::cout << "Введите имя 1-го игрока: ";
+    std::cin >> ms.Name1; std::cout << std::endl;
+    std::cout << "Введите имя 2-го игрока: ";
+    std::cin >> ms.Name2; std::cout << std::endl;
+    ms.Score1 = 0;
+    ms.Score2 = 0;
+
+    std::cout << "Имя первого игрока " << ms.Name1 << std::endl;
+    std::cout << "Имя второго игрока " << ms.Name2 << std::endl;
+    std::cout << "Стартовый счет      " << ms.Score1 << "    " << ms.Score2 << std::endl;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            ms.mas[i][j] = sp;
+        }
     }
-    std::cout << std::endl;*/
 
-    /*=======================================*/
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            std::cout << ms.mas[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 
-    /*=======================================*/
+    std::cout << std::endl << std::endl;
+
+
+/*=======================================*/
 
     std::cout << "Переменная типа short int:\t " << a << "\t\tзанимает байт:\t" << sizeof(a) << "\tадрес в памяти переменной:\t" << &a << std::endl;
     std::cout << "Переменная типа int:\t\t " << b << "\t\tзанимает байт:\t" << sizeof(b) << "\tадрес в памяти переменной:\t" << &b << std::endl;
