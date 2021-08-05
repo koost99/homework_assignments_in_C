@@ -1,0 +1,117 @@
+#include <iostream>
+
+using namespace std;
+
+
+// вывод массива double в консоль.
+void Unit_1(double a[], int n){
+	for (int i = 0; i < n; i++) {
+		cout << a[i] << " ";
+	}
+	cout << endl;
+
+}
+// задание с инверсией массива единиц и нулей.
+void Unit_1(int a[], int n) {
+
+	cout << n << endl;
+	for (int i = 0; i < n; i++) {
+		cout << a[i] << " ";
+	}
+	cout << endl;
+	for (int i = 0; i < n; i++) {
+		a[i] = !a[i];
+	}
+	for (int i = 0; i < n; i++) {
+		cout << a[i] << " ";
+	}
+}
+
+
+// задание на заполнение массива числами 1 4 7 10 13 16 19 22. вывод происходит в функции Main.
+void Unit_2(int* a, int n) {
+	for (int i = 1; i < n+1; i++) {
+		if (i == 1) a[i - 1] = i;
+		else a[i - 1] = a[i - 2] + 3;
+	}
+}
+
+// задание для поиска симметрии в массиве. решается суммированием элементов в аккумуляторы и их последующим сравнением.
+void Unit_3(int a[], int size) {
+	int acc1 = 0;
+	int acc2 = 0;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (j <=i) acc1 += a[j];
+			else acc2 += a[j];
+		}
+		if (acc1 == acc2) { cout << "True" << endl; break; }
+		acc1 = 0; acc2 = 0;
+		if (i == (size - 1)) { cout << "False" << endl; }
+	}
+
+}
+// задание со смещением. смещение отрабатывается путем перемещения элемента с одного конца массива в противоположный.
+void Unit_4(int* a, int n, int smesh){
+	while (smesh != 0) {
+		if (smesh > 0) {
+			for (int i = 0; i < n-1; i++) {
+				int buff =0;
+				buff = a[i];
+				a[i] = a[i+1];
+				a[i+1] = buff;
+			}
+			smesh--;
+		}
+		else{
+			for (int i = n-2; i > -1; i--) {
+					int buff = 0;
+					buff = a[i+1];
+					a[i+1] = a[i];
+					a[i] = buff;
+			}
+			smesh++;
+		}
+	}
+
+}
+
+
+
+// меню для выбора задания для проверки
+int main() {
+	int a[] = {1,2,3,4,2,3,4,1};
+	double f[] = { 1.2, 1.4, 1.6, 3.1415, 2.96 };
+	int b[] = { 1,1,0,0,1,0,1,1,0,1,0,0,1,1,0,0,0,1 };
+	int d[8];
+	int* ukz = d;
+	int e[] = {1,2,3,4,5,6,7,8,9,0};
+	int smesh = -2;
+	setlocale(LC_ALL, "Ru");
+	int c;
+	c = -1;
+	while (c != 0) {
+		cout << "Введите номер задания из списка домашнего задания или введите 0 для выхода из программы: ";
+		cin >> c;
+		switch (c) {
+		case(0): cout << "До свидания!" << endl; break;
+		case(1): cout << endl; Unit_1(b, (sizeof(b)/sizeof(int))); c = -1; cout << endl; break;
+		case(2): cout << endl; Unit_2(d, (sizeof(d) / sizeof(int))); c = -1; for (int i = 0; i < sizeof(d) / sizeof(int); i++) {
+				cout << d[i] << " ";
+			}	cout << endl; break;
+		case(3): cout << endl; Unit_3(a, (sizeof(a)/sizeof(int))); c = -1; cout << endl; break;
+		case(4): cout << endl; Unit_4(e, (sizeof(e) / sizeof(int)), smesh); c = -1; for (int i = 0; i < sizeof(e)/sizeof(int); i++) {
+				cout << e[i] << "  "; 
+			}	cout << endl; break;
+		case(5): cout << endl;  Unit_1(f, (sizeof(f) / sizeof(double))); c = -1; cout << endl; break;
+		case(6): cout << "Пока в процессе восприятия и применения знаний в коде" << endl; break;
+		default: cout << "А нам такого не задавали =( " << endl;
+		}
+
+
+	}
+	return 0;
+
+
+}
+
