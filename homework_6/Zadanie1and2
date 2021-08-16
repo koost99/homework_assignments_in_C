@@ -1,0 +1,76 @@
+#include <iostream>
+#include <clocale>
+#include <cmath>
+#include <ctime>
+
+using namespace std;
+
+
+
+void Unit_1() {
+    int SIZE_MAS;
+    cout << "Введите необходимый размер массива: ";
+    cin >> SIZE_MAS;
+    cout << endl;
+    int acc = 0;
+    long long* resMas = new long long[SIZE_MAS];
+    for (int i = 1; i <= SIZE_MAS; i++) {
+        resMas[i - 1] = pow(2, i);
+    }
+    for (int i = 0; i < SIZE_MAS; i++) {
+        if (resMas[i] > 0)
+            cout << resMas[i] << " ";
+        else acc += 1;
+    }
+    cout << endl;
+    cout << endl;
+    cout << "выведено элементов: " << SIZE_MAS - acc << endl;;
+    delete[] resMas;
+}
+
+
+void Unit_2() {
+    const int SIZEX = 4;
+    const int SIZEY = 4;
+    int** masUkz = new int * [SIZEX];
+    for (int i = 0; i < SIZEX; i++) {
+         masUkz[i] = new int[SIZEY];
+    }
+    for (int i = 0; i < SIZEX; i++) {
+        for (int j = 0; j < SIZEY; j++) {
+            masUkz[i][j] = rand();
+        }
+    }
+    for (int i = 0; i < SIZEX; i++) {
+        for (int j = 0; j < SIZEY; j++) {
+            cout << masUkz[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    for (int i = 0; i < SIZEX; i++) {
+        delete[] masUkz[i];
+    }
+    delete[] masUkz;
+    cout << endl;
+}
+
+
+
+int main()
+{
+    setlocale(LC_ALL, "Ru");
+    cout << "Здравствуй! сегодня я не очень хочу заморачиваться с меню заданием. "<< endl;
+    cout << "по этому первые 2 задачи просто выведутся последовательно." << endl;
+    cout << "я надеюсь, что моя лень мне в данном случае простительна." << endl;
+    srand(time(nullptr));
+
+    Unit_1();
+    cout << endl;
+    Unit_2();
+    cout << endl;
+    system("pause");
+    return 0;
+
+}
