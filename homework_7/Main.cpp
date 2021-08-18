@@ -3,8 +3,6 @@
 #include <fstream>
 #include "MyLib.h"
 
-
-
 #define TFComand (a>=0 && a<b)?std::cout<<"True":std::cout<<"false"
 #define SMAS 5
 #define SwapINT(a, b) \
@@ -21,12 +19,6 @@ struct Worker {
 };
 #pragma pack(pop)
 
-
-
-
-
-
-
 using namespace MSpace;
 /*Если честно, я не совсем уверен, что этот код именно то, что является ответом на 1-е и 5-е задание урока... */
 /*плюс бонусом есть неуверенность в том, что если с помощью своей библиотеки я захочу создать еще парочку массивов
@@ -34,7 +26,7 @@ using namespace MSpace;
 int main()
 {
     setlocale(LC_ALL, "Ru");
-
+    //========= Задание 4 ============
     Worker* e1 = new Worker;
     Worker* e2 = new Worker;
     e1->id_w = 1;
@@ -54,10 +46,8 @@ int main()
     }
     out.close();
 
-
-
-
-    /*int mas[SMAS];
+    //========= Задание 3 ============
+    int mas[SMAS];
     for (int i = 0; i < SMAS; i++) {
         std::cin >> mas[i];
     }
@@ -75,19 +65,21 @@ int main()
     } while (cell != 0);
     for (int i = 0; i < SMAS; i++) {
         std::cout << mas[i] << "  ";
-    }*/
+    }
 
-    /*const int b = 10;
+    //========= Задание 2 ============
+    const int b = 10;
     int a;
     std::cin >> a;
-    TFComand;*/
+    TFComand;
 
-    /*float* ukz = ConstructMas();
+    //========= Задание 1 и 5 ============
+    float* ukz = ConstructMas();
     std::cout << ukz << std::endl;
     InitMas(ukz);
     ScoreMas(ukz);
     ShowMas(ukz);
-    ConstructMas(ukz);*/
+    ConstructMas(ukz);
     return 0;
 }
 
