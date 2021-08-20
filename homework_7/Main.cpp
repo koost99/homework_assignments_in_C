@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <fstream>
 #include "MyLib.h"
@@ -45,6 +45,8 @@ int main()
         out << e2->name << e2->id_w << "  " << e2->name_work << e2->id_work << std::endl << sizeof(e2) << std::endl;
     }
     out.close();
+    delete e1;
+    delete e2;
 
     //========= Задание 3 ============
     int mas[SMAS];
